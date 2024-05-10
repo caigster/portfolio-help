@@ -11,17 +11,20 @@ window.onbeforeunload = function () {
     });
   
     const skillset = {
-      "html-css": "70%",
-      "javascript": "75%",
-      "bootstrap-jquery": "55%",
-      "angularjs": "65%",
-      "nodejs-expressjs": "60%",
-      "c-cpp": "80%",
-      "java-android": "75%",
-      "algorithm": "80%",
-      "git-github": "40%"
+      "java": 100,
+      "javascript": 20,
+      "sql": 80,
+      "c-sharp": 4,
+      "c-cpp": 50,
+      "css": 60,
+      "python": 100,
+      "problem-solving": 90,
     };
   
+    for(let key in skillset) {
+      $(".percentage." + key).html(`${skillset[key]}%`);
+    }
+    
     // Handle clicking toggle menu icon
     $("#navicon").click(function(){
       $("#mynav").toggleClass("responsive");
@@ -103,7 +106,9 @@ window.onbeforeunload = function () {
           let timeout = time;
           for(let key in skillset) {
             setTimeout(function(){
-              $(".progress-bar." + key).css("width", skillset[key]);
+              $(".progress-bar." + key).animate({
+                  "width": `${(skillset[key] *.8)}%`
+              }, 500);
             }, timeout);
             timeout += 50;  
           }
